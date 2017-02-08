@@ -42,7 +42,7 @@
 
         $output .=
                 '<h2>Please enter a job to add to your employment history:</h2>
-                    <form action="added_job.php" method="post">
+                    <form action="/added_job" method="post">
                         <div class="form-group">
                             <label for="when_employed">When were you employed?</label>
                             <input id="when_employed" class="form-control" name="when_employed" type="text">
@@ -61,6 +61,39 @@
             </body>
         </html>
 
+        ';
+
+        return $output;
+
+    });
+
+    $app->post('/added_job', function() {
+
+        $job = new Job(
+            $_POST['when_employed'],
+            $_POST['job_title'],
+            $_POST['employer']
+        );
+
+        $output = '
+        <!DOCTYPE html>
+        <html>
+            <head>
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css">
+                <title>Job History</title>
+            </head>
+            <body>
+                <div class="container">
+                    <h1>You added a job!</h1>';
+
+                    $output .= "<h3> Employment Period: " . $job->getWhenEmployed();
+                    $output .= "<br> Job Title: " . $job->getJobTitle();
+                    $output .= "<br> Employer: " . $job->getEmployer() . "</h3>" .
+
+                    '<p><a href="/">See all jobs and add another!</a></p>
+                </div>
+            </body>
+        </html>
         ';
 
         return $output;

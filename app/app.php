@@ -11,10 +11,7 @@
     $app = new Silex\Application();
 
     $app->get('/', function() {
-        $new_job1 = new Job("Jan 2014 - May 2016", "Janitor", "Melrose Corp");
-        $new_job2 = new Job("Jan 2017 - May 2018", "Dish Washer", " Ritz");
-        $jobs = array($new_job1, $new_job2);
-        array_push($_SESSION['list_of_jobs'], $jobs);
+        $jobs = Job::getAll();
 
         $output = '
         <!DOCTYPE html>
@@ -64,16 +61,16 @@
         ';
 
         return $output;
-
     });
 
-    $app->post('/added_job', function() {
 
+    $app->post('/added_job', function() {
         $job = new Job(
             $_POST['when_employed'],
             $_POST['job_title'],
             $_POST['employer']
         );
+        $job->save();
 
         $output = '
         <!DOCTYPE html>

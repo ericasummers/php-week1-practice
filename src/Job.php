@@ -23,5 +23,17 @@ class Job
     function getEmployer() {
         return $this->employer;
     }
+
+    function save() {
+        array_push($_SESSION['list_of_jobs'], $this);
+    }
+
+    static function getAll() {
+        return $_SESSION['list_of_jobs'];
+    }
+
+    static function deleteAll() {
+        $_SESSION['list_of_jobs'] = array();
+    }
 }
 ?>

@@ -25,15 +25,15 @@ class Job
     }
 
     function save() {
-        array_push($_SESSION['list_of_jobs'], $this);
+        array_push($_SESSION[JOB_SESSION_KEY], $this);
     }
 
     static function getAll() {
-        return $_SESSION['list_of_jobs'];
+        return $_SESSION[JOB_SESSION_KEY];
     }
 
     static function deleteAll() {
-        $_SESSION['list_of_jobs'] = array();
+        $_SESSION[JOB_SESSION_KEY] = array();
     }
 }
 ?>

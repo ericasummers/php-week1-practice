@@ -4,8 +4,9 @@
     require_once __DIR__."/../src/Job.php";
 
     session_start();
-    if (empty($_SESSION['list_of_jobs'])) {
-        $_SESSION['list_of_jobs'] = array();
+    define('JOB_SESSION_KEY', 'list_of_jobs');
+    if (empty($_SESSION[JOB_SESSION_KEY])) {
+        $_SESSION[JOB_SESSION_KEY] = array();
     }
 
     $app = new Silex\Application();

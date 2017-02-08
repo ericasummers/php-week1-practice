@@ -48,7 +48,7 @@ This lab is about experimenting with PHP and installing the silex and Twig frame
 
 * Phase 2
 
-#### Create and display all and Add Job route
+#### Create and display all on home route
 
 #### Create an Added Job route
 

@@ -38,17 +38,28 @@ This lab is about experimenting with PHP and installing the silex and Twig frame
 * MIT
 
 ## Specifications
-* Setup Silex, Twig app
-* Phase 1 - add a job, display jobs and delete all jobs
-#### Create a Job class with Date Range, Title and Company
-#### Create Display all and Add Job route
-#### Create an Added Job route
-#### Create a All deleted route
+* Phase 1 - add a job, display job
+* Setup Silex app
+* Create a Job class with Date Range, Title and Company
 
 |Behavior|Input|Output|
 |--------|-----|------|
 |Add Job| Jan 2014 - May 2016, Janitor, Melrose Corp | Output same as Input|
+
+* Phase 2
+
+#### Create and display all and Add Job route
+
+#### Create an Added Job route
+
+#### Create a All deleted route
+
+|Behavior|Input|Output|
+|--------|-----|------|
+|Click Add | "2009-2016", "Firefighter/EMT", "Andover Fire and EMS"| (Display similar) |
+|Click Add | "2014-2016", "Sales Assoc.", "Sears"| (Display both jobs) |
 |Delete All| Click Delete | No more jobs listed|
 
+* Phase 3 - Implement above functionality in Twig
 
 * End specifications

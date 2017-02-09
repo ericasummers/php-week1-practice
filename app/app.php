@@ -20,9 +20,9 @@
 
     $app->get('/', function() use ($app) {
         $jobs = Job::getAll();
-        $formvalue = (object) array('when_employed' => '2010', 'job_title' => 'Dog chef', 'employer' => 'PetCo');
+        $form_values = array('when_employed' => '', 'job_title' => '', 'employer' => '');
 
-        return $app['twig']->render('view_all.html.twig', array('jobs' => $jobs, 'formvalue' => $formvalue));
+        return $app['twig']->render('view_all.html.twig', array('jobs' => $jobs, 'form_values' => $form_values));
     });
 
     $app->post('/', function() use ($app) {
@@ -43,9 +43,9 @@
         }
 
         $jobs = Job::getAll();
-        $formvalue = (object) array('when_employed' => '2013', 'job_title' => 'Dog chef', 'employer' => 'PetCo');
+        $form_values = array('when_employed' => '', 'job_title' => '', 'employer' => '');
 
-        return $app['twig']->render('view_all.html.twig', array('jobs' => $jobs, 'formvalue' => $formvalue));
+        return $app['twig']->render('view_all.html.twig', array('jobs' => $jobs, 'form_values' => $form_values));
     });
 
     return $app;

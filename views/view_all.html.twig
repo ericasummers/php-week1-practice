@@ -23,15 +23,15 @@
             <form action="/" method="post">
                 <div class="form-group">
                     <label for="when_employed">When were you employed?</label>
-                    <input id="when_employed" class="form-control" name="when_employed" type="text" value="{{ formvalue.when_employed }}">
+                    <input id="when_employed" class="form-control" name="when_employed" type="text" value="{{ form_values.when_employed }}">
                 </div>
                 <div class="form-group">
                     <label for="job_title">Title</label>
-                    <input id="job_title" class="form-control" name="job_title" type="text" value="{{ formvalue.job_title }}">
+                    <input id="job_title" class="form-control" name="job_title" type="text" value="{{ form_values.job_title }}">
                 </div>
                 <div class="form-group">
                     <label for="employer">Who was your employer?</label>
-                    <input id="employer" class="form-control" name="employer" type="text" value="{{ formvalue.employer }}">
+                    <input id="employer" class="form-control" name="employer" type="text" value="{{ form_values.employer }}">
                 </div>
                 <button class="btn" type="submit" name="add_new_job_button_clicked">Add a Job!</button>
             </form>

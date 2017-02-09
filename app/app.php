@@ -25,24 +25,21 @@
     });
 
     $app->post('/', function() use ($app) {
-        $job = new Job(
-            $_POST['when_employed'],
-            $_POST['job_title'],
-            $_POST['employer']
-        );
-        $job->save();
+        if (array_key_exists("delete_all_jobs_button_clicked", $_POST)) {
+            Job::deleteAll();
+        } elseif (array_key_exists("add_new_job_button_clicked", $_POST)) {
+            $job = new Job(
+                $_POST['when_employed'],
+                $_POST['job_title'],
+                $_POST['employer']
+            );
+            $job->save();
+        }
+
         $jobs = Job::getAll();
 
         return $app['twig']->render('view_all.html.twig', array('jobs' => $jobs));
     });
-
-    $app->post('/delete_all', function() use ($app) {
-        Job::deleteAll();
-
-        return $app['twig']->render('delete_all.html.twig');
-    });
-
-
 
     return $app;
 

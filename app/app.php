@@ -11,6 +11,11 @@
 
     $app = new Silex\Application();
 
+    $app->register(
+        new Silex\Provider\TwigServiceProvider(),
+        array('twig.path' => __DIR__.'/../views')
+    );
+
     $app->get('/', function() {
         $jobs = Job::getAll();
 
@@ -69,7 +74,7 @@
     });
 
 
-    $app->post('/added_job', function() {
+    $app->post('/added_job', function() use ($app) {
         $job = new Job(
             $_POST['when_employed'],
             $_POST['job_title'],
@@ -77,51 +82,13 @@
         );
         $job->save();
 
-        $output = '
-        <!DOCTYPE html>
-        <html>
-            <head>
-                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css">
-                <title>Job History</title>
-            </head>
-            <body>
-                <div class="container">
-                    <h1>You added a job!</h1>';
-
-                    $output .= "<h3> Employment Period: " . $job->getWhenEmployed();
-                    $output .= "<br> Job Title: " . $job->getJobTitle();
-                    $output .= "<br> Employer: " . $job->getEmployer() . "</h3>" .
-
-                    '<p><a href="/">See all jobs and add another!</a></p>
-                </div>
-            </body>
-        </html>
-        ';
-
-        return $output;
-
+        return $app['twig']->render('add_job.html.twig', array('job' => $job));
     });
 
-    $app->post('/delete_all', function() {
+    $app->post('/delete_all', function() use ($app) {
         Job::deleteAll();
 
-        $output = '
-        <!DOCTYPE html>
-        <html>
-            <head>
-                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css">
-                <title>Job History</title>
-            </head>
-            <body>
-                <div class="container">
-                    <h1>Job list has been cleared.</h1>
-                    <p><a href="/">Add a new job!</a></p>
-                </div>
-            </body>
-        </html>
-        ';
-
-        return $output;
+        return $app['twig']->render('delete_all.html.twig');
     });
 
 

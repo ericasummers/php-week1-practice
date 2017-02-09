@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css">
+        <title>Job History</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>You added a job!</h1>
+            <h4>
+                <br> Employment Period: {{ job.getWhenEmployed }}
+                <br> Job Title: {{ job.getJobTitle }}
+                <br> Employer: {{ job.getEmployer }}
+            </h4>
+            <br>
+            <p><a href="/">See all jobs and add another!</a></p>
+        </div>
+    </body>
+</html>

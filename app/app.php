@@ -11,6 +11,8 @@
 
     $app = new Silex\Application();
 
+    $app['debug'] = true;
+
     $app->register(
         new Silex\Provider\TwigServiceProvider(),
         array('twig.path' => __DIR__.'/../views')
@@ -22,16 +24,16 @@
         return $app['twig']->render('view_all.html.twig', array('jobs' => $jobs));
     });
 
-
-    $app->post('/added_job', function() use ($app) {
+    $app->post('/', function() use ($app) {
         $job = new Job(
             $_POST['when_employed'],
             $_POST['job_title'],
             $_POST['employer']
         );
         $job->save();
+        $jobs = Job::getAll();
 
-        return $app['twig']->render('add_job.html.twig', array('job' => $job));
+        return $app['twig']->render('view_all.html.twig', array('jobs' => $jobs));
     });
 
     $app->post('/delete_all', function() use ($app) {

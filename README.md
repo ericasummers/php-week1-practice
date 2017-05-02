@@ -1,8 +1,8 @@
 # Getting Started with PHP
 
-#### Epicodus PHP Week 1 Lab, 2/8/2017
+#### Epicodus PHP Week 1 Lab, 2/9/2017
 
-#### By Benjamin T. Seaver and Brendan Grubb
+#### By Benjamin T. Seaver and Erica Wright
 
 ## Description
 
@@ -32,7 +32,7 @@ This lab is about experimenting with PHP and installing the silex and Twig frame
 * git
 
 ## Copyright (c)
-* 2017 Benjamin T. Seaver and Brendan Grubb
+* 2017 Benjamin T. Seaver and Erica Wright
 
 ## License
 * MIT
